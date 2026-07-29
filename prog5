@@ -1,0 +1,22 @@
+import cv2
+import numpy as np
+
+# 1. Read the image from your local directory
+image = cv2.imread('Picture5.jpg')
+
+# 2. Convert the image to grayscale (Erosion is typically done on binary/grayscale images)
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# 3. Create a 5x5 structuring element (Kernel) filled with ones
+kernel = np.ones((5, 5), np.uint8)
+
+# 4. Erode the image using the cv2.erode function
+eroded_image = cv2.erode(gray_image, kernel, iterations=1)
+
+# 5. Display the original and eroded images
+cv2.imshow('Original Image', gray_image)
+cv2.imshow('Eroded Image', eroded_image)
+
+# 6. Keep windows open until a key is pressed, then clean up
+cv2.waitKey(0)
+cv2.destroyAllWindows()
